@@ -7,4 +7,5 @@ class Students : public People
 {
 private:
   string MSSV;
+  float Point;
 };
