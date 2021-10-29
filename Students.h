@@ -6,5 +6,5 @@
 class Students : public People
 {
 private:
-  int ID;
+  string MSSV;
 };
