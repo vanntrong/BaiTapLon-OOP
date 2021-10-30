@@ -52,8 +52,6 @@ std::istream &operator>>(std::istream &is, Date &newDate)
 //overloading ham xuat
 std::ostream &operator<<(std::ostream &os, const Date &newDate)
 {
-  os << "Day: " << newDate.day << std::endl;
-  os << "Month: " << newDate.month << std::endl;
-  os << "Year: " << newDate.year << std::endl;
+  os << newDate.day << "/" << newDate.month << "/" << newDate.year << std::endl;
   return os;
 }
