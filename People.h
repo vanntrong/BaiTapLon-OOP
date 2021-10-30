@@ -18,8 +18,7 @@ public:
 std::istream &operator>>(std::istream &is, People &newPeople)
 {
   std::cout << std::endl
-            << "**********Input**********" << std::endl
-            << std::endl;
+            << "-----Input Info-----" << std::endl;
   std::cout << "Input full name: ";
   fflush(stdin);
   getline(is, newPeople.fullName);
@@ -28,8 +27,7 @@ std::istream &operator>>(std::istream &is, People &newPeople)
   std::cout << "Input address: ";
   fflush(stdin);
   getline(is, newPeople.address);
-  std::cout << std::endl
-            << "*************************" << std::endl;
+  std::cout << "--------------------" << std::endl;
   return is;
 }
 
