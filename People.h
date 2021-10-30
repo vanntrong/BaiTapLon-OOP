@@ -33,13 +33,9 @@ std::istream &operator>>(std::istream &is, People &newPeople)
 
 std::ostream &operator<<(std::ostream &os, const People &newPeople)
 {
-  os << std::endl
-     << "**********Information**********" << std::endl
-     << std::endl;
   os << "Full name: " << newPeople.fullName << std::endl;
   os << "Date of birth: " << std::endl;
   std::cout << newPeople.dateOfBirth;
-  os << "Address: " << newPeople.dateOfBirth << std::endl;
-  os << "*******************************" << std::endl;
+  os << "Address: " << newPeople.address << std::endl;
   return os;
 }
