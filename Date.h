@@ -18,11 +18,13 @@ public:
   friend std::ostream &operator<<(std::ostream &os, const Date &newDate);
 };
 
+//ham khoi tao khong doi so
 Date::Date()
 {
   this->day = this->month = this->year = 0;
 }
 
+//Ham khoi tao co doi so
 Date::Date(int day, int month, int year)
 {
   this->day = day;
@@ -30,10 +32,12 @@ Date::Date(int day, int month, int year)
   this->year = year;
 }
 
+//Ham huy
 Date::~Date()
 {
 }
 
+//overloading ham nhap
 std::istream &operator>>(std::istream &is, Date &newDate)
 {
   std::cout << "Input day: ";
@@ -45,6 +49,7 @@ std::istream &operator>>(std::istream &is, Date &newDate)
   return is;
 }
 
+//overloading ham xuat
 std::ostream &operator<<(std::ostream &os, const Date &newDate)
 {
   os << "Day: " << newDate.day << std::endl;

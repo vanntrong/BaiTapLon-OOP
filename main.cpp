@@ -1,4 +1,8 @@
-#include "Students.h"
+#include "Student.h"
 
-int main(){
+int main()
+{
+  Student newStudent;
+  std::cin >> newStudent;
+  std::cout << newStudent;
 }

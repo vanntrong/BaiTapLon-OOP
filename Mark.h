@@ -38,12 +38,15 @@ Mark::~Mark()
 //oveloading ham nhap
 std::istream &operator>>(std::istream &is, Mark &newMark)
 {
+	std::cout << std::endl
+						<< "-----Input Mark-----" << std::endl;
 	std::cout << "Input GPA: ";
 	is >> newMark.GPA;
 	std::cout << "Input training point: ";
 	is >> newMark.trainingPoint;
 	std::cout << "Input extra point: ";
 	is >> newMark.extraPoint;
+	std::cout << "--------------------" << std::endl;
 	return is;
 }
 
