@@ -18,6 +18,8 @@ struct listStudent
 	bool isEmpty();
 	void showList();
 	void addLast();
+	void removeHead();
+	void PrintList();
 };
 
 using namespace std;
@@ -91,4 +93,32 @@ void listStudent::addLast()
 		tail = node;
 	}
 	size++;
+}
+// xoa mot sv dau danh sach
+void listStudent::removeHead(int& x)
+{
+	
+	if (isEmpty())
+	{
+		Note* note = head;
+		x = node->data; // Luu node lai
+		head = node ->next;
+		detele node; // Xoa node head 
+		if (head == NULL)
+	     tail = NULL;
+	    return 1;
+	}
+	return 0 ;
+}
+//duyet danh sach va in
+void listStudent::PrintList(){
+	if(head ! = NULL)
+	{
+		Node* node = head;
+		while (node = NULL)
+		{
+			cout << node->data <<' ';
+			node = node->next;
+		}
+	}
 }
