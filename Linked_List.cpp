@@ -9,7 +9,7 @@ Node *KhoiTaoNode() {
 	Input_ThongTin(sv);
 	Node* p = new Node;
 	if (p == NULL) {
-		cout << " ko thá»ƒ tao thÃªm\n";
+		cout << " khong the them vao";
 		return 0;
 	}
 	p->data = sv;
