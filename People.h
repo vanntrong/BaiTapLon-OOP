@@ -4,38 +4,36 @@ using namespace std;
 
 class People : public Date
 {
-private:
+protected:
   string fullName;
   Date dateOfBirth;
   string address;
 
 public:
-  friend std::istream &operator>>(std::istream &is, People &newPeople);
-  friend std::ostream &operator<<(std::ostream &os, const People &newPeople);
+  void Input();
+  void Output();
 };
 
 //overloading ham nhap
-std::istream &operator>>(std::istream &is, People &newPeople)
+void People::Input()
 {
   std::cout << std::endl
             << "-----Input Info-----" << std::endl;
   std::cout << "Input full name: ";
   fflush(stdin);
-  getline(is, newPeople.fullName);
+  getline(cin, this->fullName);
   cout << "Input date of birth: " << std::endl;
-  std::cin >> newPeople.dateOfBirth;
+  std::cin >> this->dateOfBirth;
   std::cout << "Input address: ";
   fflush(stdin);
-  getline(is, newPeople.address);
+  getline(cin, this->address);
   std::cout << "--------------------" << std::endl;
-  return is;
 }
 
-std::ostream &operator<<(std::ostream &os, const People &newPeople)
+void People::Output()
 {
-  os << "Full name: " << newPeople.fullName << std::endl;
-  os << "Date of birth: " << std::endl;
-  std::cout << newPeople.dateOfBirth;
-  os << "Address: " << newPeople.address << std::endl;
-  return os;
+  std::cout << "Full name: " << this->fullName << std::endl;
+  std::cout << "Date of birth: " << std::endl;
+  std::cout << this->dateOfBirth;
+  std::cout << "Address: " << this->address << std::endl;
 }

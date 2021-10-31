@@ -8,7 +8,6 @@ class Student : public People, public Mark
 {
 private:
   string MSSV;
-  People newPeople;
   Mark newMark;
 
 public:
@@ -23,7 +22,7 @@ std::istream &operator>>(std::istream &is, Student &newStudent)
             << std::endl;
   std::cout << "Input MSSV: ";
   is >> newStudent.MSSV;
-  std::cin >> newStudent.newPeople;
+  newStudent.Input();
   std::cin >> newStudent.newMark;
   std::cout << std::endl
             << "*************************" << std::endl;
@@ -36,7 +35,7 @@ std::ostream &operator<<(std::ostream &os, Student &newStudent)
      << "**********Information**********" << std::endl
      << std::endl;
   os << "MSSV: " << newStudent.MSSV << std::endl;
-  std::cout << newStudent.newPeople;
+  newStudent.Output();
   std::cout << newStudent.newMark;
   os << "*******************************" << std::endl;
   return os;
