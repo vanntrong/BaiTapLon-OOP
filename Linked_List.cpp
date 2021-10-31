@@ -3,8 +3,16 @@
 #include <string>
 
 using namespace std;
-
-struct Student{
-	int mssv;
-	string fullname;
-};
+//khoi tao Node
+Node *KhoiTaoNode() {
+	sinhvien* sv = new sinhvien;
+	Input_ThongTin(sv);
+	Node* p = new Node;
+	if (p == NULL) {
+		cout << " ko thá»ƒ tao thÃªm\n";
+		return 0;
+	}
+	p->data = sv;
+	p->link = NULL;
+	return p;
+}
