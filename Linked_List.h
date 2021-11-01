@@ -97,18 +97,18 @@ void listStudent::addLast()
 // xoa mot sv dau danh sach
 void listStudent::removeHead(int &x)
 {
-
 	if (isEmpty())
 	{
-		Note *note = head;
-		x = node->data; // Luu node lai
-		head = node->next;
-		delete node; // Xoa node head
-		if (head == NULL)
-			tail = NULL;
-		return 1;
+		cout << "Error!!!" << endl;
+		return;
 	}
-	return 0;
+	else
+	{
+		Node *node = head;
+		head = head->next;
+		delete node;
+		size--;
+	}
 }
 //duyet danh sach va in
 void listStudent::PrintList()
