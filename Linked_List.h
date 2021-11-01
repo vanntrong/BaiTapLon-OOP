@@ -19,7 +19,7 @@ struct listStudent
 	void showList();
 	void addFirst();
 	void addLast();
-	Node *previous(Node *p);
+	Node *previous(Node *node);
 	void removeHead();
 	// void PrintList();
 };
@@ -108,12 +108,12 @@ void listStudent::addLast()
 }
 
 //tim mot node truoc node chi dinh
-Node *listStudent::previous(Node *p)
+Node *listStudent::previous(Node *node)
 {
-	Node *t = head;
-	while (t->next != p)
-		t = t->next;
-	return t;
+	Node *previousNode = head;
+	while (previousNode->next != node)
+		previousNode = previousNode->next;
+	return previousNode;
 }
 // xoa mot sv dau danh sach
 void listStudent::removeHead(int &x)
