@@ -116,6 +116,7 @@ Node *listStudent::previous(Node *node)
 		previousNode = previousNode->next;
 	return previousNode;
 }
+
 // xoa mot sv dau danh sach
 void listStudent::removeHead()
 {
@@ -143,7 +144,7 @@ void listStudent::removeLast()
 	}
 	for (Node *p = head; p != NULL; p = p->next)
 		{
-			if (p -> next == tail)
+			if (p->next == tail)
 			{
 				delete tail;
 				p->next = NULL;
