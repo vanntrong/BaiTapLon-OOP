@@ -17,9 +17,11 @@ struct listStudent
 	void initList();
 	bool isEmpty();
 	void showList();
+	void addFirst();
 	void addLast();
+	Node *previous(Node *p);
 	void removeHead();
-	void PrintList();
+	// void PrintList();
 };
 
 using namespace std;
@@ -79,6 +81,16 @@ void listStudent::showList()
 	cout << "************************" << endl;
 }
 
+//them mot sinh vien vao dau danh sach
+void listStudent::addFirst()
+{
+	Node *p = CreateNode();
+	p->next = head;
+	head = p;
+	if (size == 0)
+		tail = p;
+	size++;
+}
 //them mot sinh vien vao cuoi danh sach
 void listStudent::addLast()
 {
@@ -93,6 +105,15 @@ void listStudent::addLast()
 		tail = node;
 	}
 	size++;
+}
+
+//tim mot node truoc node chi dinh
+Node *listStudent::previous(Node *p)
+{
+	Node *t = head;
+	while (t->next != p)
+		t = t->next;
+	return t;
 }
 // xoa mot sv dau danh sach
 void listStudent::removeHead(int &x)
