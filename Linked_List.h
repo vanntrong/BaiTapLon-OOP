@@ -95,29 +95,30 @@ void listStudent::addLast()
 	size++;
 }
 // xoa mot sv dau danh sach
-void listStudent::removeHead(int& x)
+void listStudent::removeHead(int &x)
 {
-	
+
 	if (isEmpty())
 	{
-		Note* note = head;
+		Note *note = head;
 		x = node->data; // Luu node lai
-		head = node ->next;
-		detele node; // Xoa node head 
+		head = node->next;
+		delete node; // Xoa node head
 		if (head == NULL)
-	     tail = NULL;
-	    return 1;
+			tail = NULL;
+		return 1;
 	}
-	return 0 ;
+	return 0;
 }
 //duyet danh sach va in
-void listStudent::PrintList(){
-	if(head ! = NULL)
+void listStudent::PrintList()
+{
+	if (head ! = NULL)
 	{
-		Node* node = head;
+		Node *node = head;
 		while (node = NULL)
 		{
-			cout << node->data <<' ';
+			cout << node->data << ' ';
 			node = node->next;
 		}
 	}
