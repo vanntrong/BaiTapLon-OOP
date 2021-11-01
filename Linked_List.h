@@ -111,15 +111,30 @@ void listStudent::removeHead(int &x)
 	}
 }
 //duyet danh sach va in
-void listStudent::PrintList()
-{
-	if (head ! = NULL)
-	{
-		Node *node = head;
-		while (node = NULL)
-		{
-			cout << node->data << ' ';
-			node = node->next;
-		}
-	}
-}
+// void listStudent::PrintList()
+// {
+// 	// if (head ! = NULL)
+// 	// {
+// 	// 	Node *node = head;
+// 	// 	while (node = NULL)
+// 	// 	{
+// 	// 		cout << node->data << ' ';
+// 	// 		node = node->next;
+// 	// 	}
+// 	// }
+
+// 	if (isEmpty())
+// 	{
+// 		cout << "Error!!!";
+// 		return;
+// 	}
+// 	else
+// 	{
+// 		Node *node = head;
+// 		while (node != NULL)
+// 		{
+// 			cout << node->data;
+// 			node = node->next;
+// 		}
+// 	}
+// }
