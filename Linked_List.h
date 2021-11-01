@@ -22,6 +22,7 @@ struct listStudent
 	Node *previous(Node *node);
 	void removeHead();
 	void removeLast();
+	void findbyName();
 	// void PrintList();
 };
 
@@ -152,6 +153,28 @@ void listStudent::removeLast()
 				return;
 			}
 		}
+}
+
+// tim kiem sinh vien theo ten
+void findbyName()
+{
+	string name;
+	cout << "Enter Name you need to find: ";
+	fflush(stdin);
+	getline(cin, fullName)
+	Node *p = head;
+	while (p != NULL)
+	{
+		if (p->data.fullName = name)
+		{
+			showNode(p);
+			return;
+		}
+		else
+		{
+			p = p->next;	
+		}
+	}
 }
 
 
