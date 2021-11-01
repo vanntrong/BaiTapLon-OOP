@@ -1,8 +1,11 @@
-#include "Student.h"
+#include "Linked_List.h"
 
 int main()
 {
-  Student newStudent;
-  std::cin >> newStudent;
-  std::cout << newStudent;
+  listStudent newList;
+  newList.initList();
+  newList.addFirst();
+  newList.showList();
+  newList.removeHead();
+  newList.showList();
 }

@@ -1,4 +1,4 @@
-#BaiTapLon - OOP
+
 #include <iostream>
 #include <string>
 #include "Student.h"
@@ -26,9 +26,9 @@ struct listStudent
 
 using namespace std;
 //khoi tao Node
-Node *KhoiTaoNode()
+Node *createNode()
 {
-	Student *sinhVien = new Student;
+	Student sinhVien;
 	cin >> sinhVien;
 	Node *p = new Node;
 	if (p == NULL)
@@ -84,7 +84,7 @@ void listStudent::showList()
 //them mot sinh vien vao dau danh sach
 void listStudent::addFirst()
 {
-	Node *p = CreateNode();
+	Node *p = createNode();
 	p->next = head;
 	head = p;
 	if (size == 0)
@@ -94,7 +94,7 @@ void listStudent::addFirst()
 //them mot sinh vien vao cuoi danh sach
 void listStudent::addLast()
 {
-	Node *node = KhoiTaoNode();
+	Node *node = createNode();
 	if (isEmpty())
 	{
 		head = tail = node;
@@ -116,7 +116,7 @@ Node *listStudent::previous(Node *node)
 	return previousNode;
 }
 // xoa mot sv dau danh sach
-void listStudent::removeHead(int &x)
+void listStudent::removeHead()
 {
 	if (isEmpty())
 	{
