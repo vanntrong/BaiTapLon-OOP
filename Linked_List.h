@@ -1,4 +1,4 @@
-
+﻿
 #include <iostream>
 #include <string>
 #include "Student.h"
@@ -21,6 +21,8 @@ struct listStudent
 	void addLast();
 	Node *previous(Node *node);
 	void removeHead();
+	void removeLast();
+	void findbyName();
 	// void PrintList();
 };
 
@@ -115,6 +117,7 @@ Node *listStudent::previous(Node *node)
 		previousNode = previousNode->next;
 	return previousNode;
 }
+
 // xoa mot sv dau danh sach
 void listStudent::removeHead()
 {
@@ -131,6 +134,50 @@ void listStudent::removeHead()
 		size--;
 	}
 }
+
+// xoa sinh vien cuoi danh sach
+void listStudent::removeLast()
+{
+	if (isEmpty())
+	{
+		cout << "Error!!!" << endl;
+		return;
+	}
+	for (Node *p = head; p != NULL; p = p->next)
+		{
+			if (p->next == tail)
+			{
+				delete tail;
+				p->next = NULL;
+				tail = p;
+				return;
+			}
+		}
+}
+
+// tim kiem sinh vien theo ten
+void findbyName()
+{
+	string name;
+	cout << "Enter Name you need to find: ";
+	fflush(stdin);
+	getline(cin, fullName)
+	Node *p = head;
+	while (p != NULL)
+	{
+		if (p->data.fullName = name)
+		{
+			showNode(p);
+			return;
+		}
+		else
+		{
+			p = p->next;	
+		}
+	}
+}
+
+
 //duyet danh sach va in
 // void listStudent::PrintList()
 // {
