@@ -159,3 +159,16 @@ void listStudent::removeHead()
 // 		}
 // 	}
 // }
+int linearSearch(int a[], int n, int key)
+{
+	itn i = 0;
+	while (i < n)
+	{
+		if (a[i] == key)
+		{
+			return i;
+		}
+		i++;
+	}
+	return -1;
+}
