@@ -156,7 +156,7 @@ void listStudent::removeLast()
 }
 
 // tim kiem sinh vien theo ten
-void findbyName()
+void listStudent::findbyName()
 {
 	string name;
 	cout << "Enter Name you need to find: ";
