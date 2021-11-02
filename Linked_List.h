@@ -144,15 +144,15 @@ void listStudent::removeLast()
 		return;
 	}
 	for (Node *p = head; p != NULL; p = p->next)
+	{
+		if (p->next == tail)
 		{
-			if (p->next == tail)
-			{
-				delete tail;
-				p->next = NULL;
-				tail = p;
-				return;
-			}
+			delete tail;
+			p->next = NULL;
+			tail = p;
+			return;
 		}
+	}
 }
 
 // tim kiem sinh vien theo ten
@@ -162,7 +162,7 @@ void findbyName()
 	cout << "Enter Name you need to find: ";
 	fflush(stdin);
 	getline(cin, fullName)
-	Node *p = head;
+			Node *p = head;
 	while (p != NULL)
 	{
 		if (p->data.fullName = name)
@@ -172,11 +172,10 @@ void findbyName()
 		}
 		else
 		{
-			p = p->next;	
+			p = p->next;
 		}
 	}
 }
-
 
 //duyet danh sach va in
 // void listStudent::PrintList()
@@ -206,16 +205,3 @@ void findbyName()
 // 		}
 // 	}
 // }
-int linearSearch(int a[], int n, int key)
-{
-	itn i = 0;
-	while (i < n)
-	{
-		if (a[i] == key)
-		{
-			return i;
-		}
-		i++;
-	}
-	return -1;
-}
