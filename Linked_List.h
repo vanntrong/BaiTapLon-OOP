@@ -165,7 +165,7 @@ void findbyName()
 			Node *p = head;
 	while (p != NULL)
 	{
-		if (p->data.fullName = name)
+		if (p->data.fullName == name) //so sanh gia tri m de 1 dau = phai la ==
 		{
 			showNode(p);
 			return;
