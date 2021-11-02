@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Student.h"
+
 struct Node
 {
 	Student data;
@@ -23,6 +24,7 @@ struct listStudent
 	void removeHead();
 	void removeLast();
 	void findbyName();
+	void findbyMSSV();
 	// void PrintList();
 };
 
@@ -161,11 +163,33 @@ void listStudent::findbyName()
 	string name;
 	cout << "Enter Name you need to find: ";
 	fflush(stdin);
-	getline(cin, fullName)
-			Node *p = head;
+	getline(cin, fullName);
+	Node *p = head;
 	while (p != NULL)
 	{
-		if (p->data.fullName == name) //so sanh gia tri m de 1 dau = phai la ==
+		if (p->data.fullName == name) 
+		{
+			showNode(p);
+			return;
+		}
+		else
+		{
+			p = p->next;
+		}
+	}
+}
+
+// tim kiem sinh vien theo MSSV
+void listStudent::findbyMSSV()
+{
+	string msv;
+	cout << "Enter MSSV you need to find: ";
+	fflush(stdin);
+	getline(cin, MSSV)
+	Node *p = head;
+	while (p != NULL)
+	{
+		if (p->data.MSSV == msv)
 		{
 			showNode(p);
 			return;
