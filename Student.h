@@ -13,6 +13,8 @@ private:
 public:
   friend std::istream &operator>>(std::istream &is, Student &newStudent);
   friend std::ostream &operator<<(std::ostream &os, Student &newStudent);
+  string getFullName();
+  string getMSSV();
 };
 
 std::istream &operator>>(std::istream &is, Student &newStudent)
@@ -39,4 +41,14 @@ std::ostream &operator<<(std::ostream &os, Student &newStudent)
   std::cout << newStudent.newMark;
   os << "*******************************" << std::endl;
   return os;
+}
+
+string Student::getFullName()
+{
+  return fullName;
+}
+
+string Student::getMSSV()
+{
+  return MSSV;
 }
