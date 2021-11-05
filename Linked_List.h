@@ -163,11 +163,12 @@ void listStudent::findbyName()
 	string name;
 	cout << "Enter Name you need to find: ";
 	fflush(stdin);
-	getline(cin, fullName);
+	getline(cin, name);
 	Node *p = head;
 	while (p != NULL)
 	{
-		if (p->data.fullName == name) 
+		// dung ham getFullName de tra ve fullname
+		if (p->data.getFullName() == name)
 		{
 			showNode(p);
 			return;
@@ -182,14 +183,15 @@ void listStudent::findbyName()
 // tim kiem sinh vien theo MSSV
 void listStudent::findbyMSSV()
 {
-	string msv;
+	string MSSV;
 	cout << "Enter MSSV you need to find: ";
 	fflush(stdin);
-	getline(cin, MSSV)
+	getline(cin, MSSV);
 	Node *p = head;
 	while (p != NULL)
 	{
-		if (p->data.MSSV == msv)
+		// dung ham get mssv de tra ve mssv
+		if (p->data.getMSSV() == MSSV)
 		{
 			showNode(p);
 			return;
