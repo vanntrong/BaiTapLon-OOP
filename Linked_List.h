@@ -15,16 +15,23 @@ struct listStudent
 	Node *tail;
 	long size;
 
+	listStudent();
+
 	void initList();
 	bool isEmpty();
 	void showList();
 	void addFirst();
 	void addLast();
+	void addLast(Node *node);
+	void insertAfter(Node *node);
 	Node *previous(Node *node);
+	void remove(Node *node);
 	void removeHead();
 	void removeLast();
 	void findbyName();
 	void findbyMSSV();
+	void removeByMSSV();
+	void removeByName();
 	// void PrintList();
 };
 
@@ -48,12 +55,18 @@ Node *createNode()
 // show node
 void showNode(Node *node)
 {
-	cout << node->data;
+	cout << "\t" << node->data;
 }
 
 //-----list----------
 //khoi tao danh sach rong
 void listStudent::initList()
+{
+	head = tail = NULL;
+	size = 0;
+}
+
+listStudent::listStudent()
 {
 	head = tail = NULL;
 	size = 0;
@@ -74,15 +87,15 @@ void listStudent::showList()
 {
 	Node *node = head;
 	int i = 0;
-	cout << "**********List**********" << endl;
+	cout << "\t----------List----------" << endl;
 	while (node != NULL)
 	{
-		cout << "Student " << i + 1 << ": " << endl;
+		cout << "\tStudent " << i + 1 << ": " << endl;
 		showNode(node);
 		node = node->next;
 		i++;
 	}
-	cout << "************************" << endl;
+	cout << "\t------------------------" << endl;
 }
 
 //them mot sinh vien vao dau danh sach
@@ -107,6 +120,37 @@ void listStudent::addLast()
 	{
 		tail->next = node;
 		tail = node;
+		// delete node;
+	}
+	size++;
+}
+
+void listStudent::addLast(Node *node)
+{
+	if (isEmpty())
+	{
+		head = tail = node;
+	}
+	else
+	{
+		tail->next = node;
+		tail = node;
+	}
+	size++;
+}
+
+// them mot node moi vao sau mot node
+void listStudent::insertAfter(Node *node)
+{
+	if (node == tail)
+	{
+		addLast();
+	}
+	else
+	{
+		Node *newNode = createNode();
+		newNode->next = node->next;
+		node->next = newNode;
 	}
 	size++;
 }
@@ -120,6 +164,24 @@ Node *listStudent::previous(Node *node)
 	return previousNode;
 }
 
+// xoa mot sinh vien bat ki
+void listStudent::remove(Node *node)
+{
+	if (node == head)
+	{
+		removeHead();
+		return;
+	}
+	if (node == tail)
+	{
+		removeLast();
+		return;
+	}
+	Node *pre = previous(node);
+	pre->next = node->next;
+	delete node;
+	size--;
+}
 // xoa mot sv dau danh sach
 void listStudent::removeHead()
 {
@@ -153,6 +215,28 @@ void listStudent::removeLast()
 			p->next = NULL;
 			tail = p;
 			return;
+		}
+	}
+}
+
+// xoa sinh vien o cuoi danh sach
+void listStudent::removeByMSSV()
+{
+	string mssv;
+	cout << "\tEnter MSSV you need to delete: ";
+	fflush(stdin);
+	getline(cin, mssv);
+	Node *node = head;
+	while (node != NULL)
+	{
+		if (node->data.getMSSV() == mssv)
+		{
+			remove(node);
+			return;
+		}
+		else
+		{
+			node = node->next;
 		}
 	}
 }

@@ -39,22 +39,22 @@ Mark::~Mark()
 std::istream &operator>>(std::istream &is, Mark &newMark)
 {
 	std::cout << std::endl
-						<< "-----Input Mark-----" << std::endl;
-	std::cout << "Input GPA: ";
+						<< "\t--------Input Mark--------" << std::endl;
+	std::cout << "\tInput GPA: ";
 	is >> newMark.GPA;
-	std::cout << "Input training point: ";
+	std::cout << "\tInput training point: ";
 	is >> newMark.trainingPoint;
-	std::cout << "Input extra point: ";
+	std::cout << "\tInput extra point: ";
 	is >> newMark.extraPoint;
-	std::cout << "--------------------" << std::endl;
+	std::cout << "\t--------------------------" << std::endl;
 	return is;
 }
 
 //overloading ham xuat
 std::ostream &operator<<(std::ostream &os, const Mark &newMark)
 {
-	os << "GPA: " << newMark.GPA << std::endl;
-	os << "Training point: " << newMark.trainingPoint << std::endl;
-	os << "Extra point: " << newMark.extraPoint << std::endl;
+	os << "\tGPA: " << newMark.GPA << std::endl;
+	os << "\tTraining point: " << newMark.trainingPoint << std::endl;
+	os << "\tExtra point: " << newMark.extraPoint << std::endl;
 	return os;
 }

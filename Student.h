@@ -20,26 +20,26 @@ public:
 std::istream &operator>>(std::istream &is, Student &newStudent)
 {
   std::cout << std::endl
-            << "**********Input**********" << std::endl
+            << "\t**********Input**********" << std::endl
             << std::endl;
-  std::cout << "Input MSSV: ";
+  std::cout << "\tInput MSSV: ";
   is >> newStudent.MSSV;
   newStudent.Input();
   std::cin >> newStudent.newMark;
   std::cout << std::endl
-            << "*************************" << std::endl;
+            << "\t*************************" << std::endl;
   return is;
 }
 
 std::ostream &operator<<(std::ostream &os, Student &newStudent)
 {
   os << std::endl
-     << "**********Information**********" << std::endl
+     << "\t**********Information**********" << std::endl
      << std::endl;
-  os << "MSSV: " << newStudent.MSSV << std::endl;
+  os << "\tMSSV: " << newStudent.MSSV << std::endl;
   newStudent.Output();
   std::cout << newStudent.newMark;
-  os << "*******************************" << std::endl;
+  os << "\t*******************************" << std::endl;
   return os;
 }
 

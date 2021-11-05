@@ -18,22 +18,22 @@ public:
 void People::Input()
 {
   std::cout << std::endl
-            << "-----Input Info-----" << std::endl;
-  std::cout << "Input full name: ";
+            << "\t--------Input Info--------" << std::endl;
+  std::cout << "\tInput full name: ";
   fflush(stdin);
   getline(cin, this->fullName);
-  cout << "Input date of birth: " << std::endl;
+  cout << "\tInput date of birth: " << std::endl;
   std::cin >> this->dateOfBirth;
-  std::cout << "Input address: ";
+  std::cout << "\tInput address: ";
   fflush(stdin);
   getline(cin, this->address);
-  std::cout << "--------------------" << std::endl;
+  std::cout << "\t--------------------------" << std::endl;
 }
 
 void People::Output()
 {
-  std::cout << "Full name: " << this->fullName << std::endl;
-  std::cout << "Date of birth: " << std::endl;
+  std::cout << "\tFull name: " << this->fullName << std::endl;
+  std::cout << "\tDate of birth: ";
   std::cout << this->dateOfBirth;
-  std::cout << "Address: " << this->address << std::endl;
+  std::cout << "\tAddress: " << this->address << std::endl;
 }
