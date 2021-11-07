@@ -38,13 +38,13 @@ Mark::~Mark()
 //oveloading ham nhap
 std::istream &operator>>(std::istream &is, Mark &newMark)
 {
-	std::cout << std::endl
-						<< "\t--------Input Mark--------" << std::endl;
-	std::cout << "\tInput GPA: ";
+	std::cout
+			<< "\t--------Nhập điểm--------" << std::endl;
+	std::cout << "\tNhập điểm trung bình : ";
 	is >> newMark.GPA;
-	std::cout << "\tInput training point: ";
+	std::cout << "\tNhập điểm rèn luyện: ";
 	is >> newMark.trainingPoint;
-	std::cout << "\tInput extra point: ";
+	std::cout << "\tNhập điểm cộng : ";
 	is >> newMark.extraPoint;
 	std::cout << "\t--------------------------" << std::endl;
 	return is;
@@ -53,8 +53,8 @@ std::istream &operator>>(std::istream &is, Mark &newMark)
 //overloading ham xuat
 std::ostream &operator<<(std::ostream &os, const Mark &newMark)
 {
-	os << "\tGPA: " << newMark.GPA << std::endl;
-	os << "\tTraining point: " << newMark.trainingPoint << std::endl;
-	os << "\tExtra point: " << newMark.extraPoint << std::endl;
+	os << "\tĐiểm trung bình : " << newMark.GPA << std::endl;
+	os << "\tĐiểm rèn luyện :  " << newMark.trainingPoint << std::endl;
+	os << "\tĐiểm cộng : " << newMark.extraPoint << std::endl;
 	return os;
 }

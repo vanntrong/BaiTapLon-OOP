@@ -40,11 +40,11 @@ Date::~Date()
 //overloading ham nhap
 std::istream &operator>>(std::istream &is, Date &newDate)
 {
-  std::cout << "\tInput day: ";
+  std::cout << "\n\tNhập ngày : ";
   is >> newDate.day;
-  std::cout << "\tInput month: ";
+  std::cout << "\tNhập tháng : ";
   is >> newDate.month;
-  std::cout << "\tInput year: ";
+  std::cout << "\tNhập năm : ";
   is >> newDate.year;
   return is;
 }

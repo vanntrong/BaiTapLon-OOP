@@ -1,5 +1,6 @@
 #include "Linked_List.h"
 #include <stdlib.h>
+#include <conio.h>
 #include <windows.h>
 
 void SetWindowSize(SHORT width, SHORT height);
@@ -10,8 +11,7 @@ void inputMenu(listStudent &newList);
 void outputMenu(listStudent newList);
 void addMenu(listStudent &newList);
 void deleteMenu(listStudent &newList);
-void deleteMSSV(listStudent &newList);
-void deleteName(listStudent &newList);
+void editMenu(listStudent &newList);
 
 void SetWindowSize(SHORT width, SHORT height)
 {
@@ -39,12 +39,11 @@ void GoTo(SHORT posX, SHORT posY)
 void exitMenu()
 {
   char choose;
-  cout << "\n\tBạn có muốn thoát? (nhập y để thoát): ";
-  cin >> choose;
-  if (choose == 'y')
-  {
-    system("cls");
-  }
+  int j;
+  cout << "\n\tNhấn phím bất kỳ để tiếp tục...";
+  // cin >> choose;
+  choose = getch();
+  system("cls");
 }
 
 void inputMenu(listStudent &newList)
@@ -97,7 +96,7 @@ void deleteMenu(listStudent &newList)
     GoTo(40, 2);
     cout << "-------------------------------------------\n";
     GoTo(53, 3);
-    cout << "XÓA MỘT SINH VIÊN\n";
+    cout << "XÓA SINH VIÊN\n";
     GoTo(40, 4);
     cout << "-------------------------------------------\n";
     GoTo(40, 5);
@@ -111,19 +110,22 @@ void deleteMenu(listStudent &newList)
     GoTo(40, 9);
     cout << "|     [3] Thoát                            |\n";
     GoTo(42, 11);
-    cout << "  Nhập lựa chọn của bạn [1, 2, 3]: ";
+    cout << "  Nhập lựa chọn của bạn [1, 2, 3] : ";
     cin >> choose;
     switch (choose)
     {
     case 1:
+      system("cls");
+      cout << "\n\t\t\n";
+      newList.removeByName();
+      exitMenu();
       // newList.removeByName();
       break;
     case 2:
       system("cls");
       cout << "\n\t\t\n";
       newList.removeByMSSV();
-      cout << "\t";
-      system("pause");
+      exitMenu();
       // char n;
       // cout << "\t\tNhấn phím bất kì để tiếp tục...";
       break;
@@ -132,6 +134,111 @@ void deleteMenu(listStudent &newList)
       break;
     }
   } while (choose != 3);
+}
+
+void editMenu(listStudent &newList)
+{
+  int choose;
+  system("cls");
+  GoTo(40, 2);
+  cout << "-------------------------------------------\n";
+  GoTo(50, 3);
+  cout << "SỬA THÔNG TIN SINH VIÊN\n";
+  GoTo(40, 4);
+  cout << "-------------------------------------------\n";
+  GoTo(38, 5);
+  Node *node = newList.findbyMSSV();
+  if (node == NULL)
+  {
+    GoTo(40, 7);
+    cout << "Không tìm thấy sinh viên này!!!\n";
+    char newChoose;
+    GoTo(40, 8);
+    cout << "Bạn có muốn tiếp tục (Nhấn Y để tiếp tục) : ";
+    cin >> newChoose;
+    if (newChoose == 'y' || newChoose == 'Y')
+    {
+      editMenu(newList);
+    }
+    else
+    {
+      system("cls");
+    }
+  }
+  else
+  {
+    do
+    {
+      system("cls");
+      GoTo(40, 2);
+      cout << "-------------------------------------------\n";
+      GoTo(53, 3);
+      cout << "SỬA THÔNG TIN SINH VIÊN\n";
+      GoTo(40, 4);
+      cout << "-------------------------------------------\n";
+      GoTo(40, 5);
+      cout << "|     [1] Sửa Mã Số Sinh Viên              |\n";
+      GoTo(40, 6);
+      cout << "|                                          |\n";
+      GoTo(40, 7);
+      cout << "|     [2] Sửa Tên Sinh Viên                |\n";
+      GoTo(40, 8);
+      cout << "|                                          |\n";
+      GoTo(40, 9);
+      cout << "|     [3] Sửa Ngày Sinh Sinh Viên          |\n";
+      GoTo(40, 10);
+      cout << "|                                          |\n";
+      GoTo(40, 11);
+      cout << "|     [4] Sửa Địa Chỉ Sinh Viên            |\n";
+      GoTo(40, 12);
+      cout << "|                                          |\n";
+      GoTo(40, 13);
+      cout << "|     [5] Sửa Điểm Sinh Viên               |\n";
+      GoTo(40, 14);
+      cout << "|                                          |\n";
+      GoTo(40, 15);
+      cout << "|     [6] Thoát                            |\n";
+      GoTo(42, 17);
+      cout << "  Nhập lựa chọn của bạn [1, 2, 3, 4, 5, 6] : ";
+      cin >> choose;
+      switch (choose)
+      {
+      case 1:
+        system("cls");
+        cout << "\n\t\t\n";
+        newList.editMSSV(node);
+        exitMenu();
+        break;
+      case 2:
+        system("cls");
+        cout << "\n\t\t\n";
+        newList.editName(node);
+        exitMenu();
+        break;
+      case 3:
+        system("cls");
+        cout << "\n\t\t\n";
+        newList.editDateOfBirth(node);
+        exitMenu();
+        break;
+      case 4:
+        system("cls");
+        cout << "\n\t\t\n";
+        newList.editAddress(node);
+        exitMenu();
+        break;
+      case 5:
+        system("cls");
+        cout << "\n\t\t\n";
+        newList.editMark(node);
+        exitMenu();
+        break;
+      case 6:
+        system("cls");
+        break;
+      }
+    } while (choose != 6);
+  }
 }
 
 void mainMenu(listStudent &newList)
@@ -181,6 +288,7 @@ void mainMenu(listStudent &newList)
       addMenu(newList);
       break;
     case 4:
+      editMenu(newList);
       break;
     case 5:
       deleteMenu(newList);

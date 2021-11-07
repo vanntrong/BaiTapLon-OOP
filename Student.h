@@ -15,6 +15,8 @@ public:
   friend std::ostream &operator<<(std::ostream &os, Student &newStudent);
   string getFullName();
   string getMSSV();
+  void setMSSV(string newMSSV);
+  void setMark(Mark newMark);
 };
 
 std::istream &operator>>(std::istream &is, Student &newStudent)
@@ -43,12 +45,26 @@ std::ostream &operator<<(std::ostream &os, Student &newStudent)
   return os;
 }
 
+//ham lay ten
 string Student::getFullName()
 {
   return fullName;
 }
 
+//ham lay mssv
 string Student::getMSSV()
 {
   return MSSV;
+}
+
+//ham sua mssv
+void Student::setMSSV(string newMSSV)
+{
+  this->MSSV = newMSSV;
+}
+
+//ham sua diem
+void Student::setMark(Mark newMark)
+{
+  this->newMark = newMark;
 }

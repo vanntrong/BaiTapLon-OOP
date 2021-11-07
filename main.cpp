@@ -1,15 +1,4 @@
 #include "menu.h"
-// #include <stdlib.h>
-// #include <windows.h>
-
-// void SetWindowSize(SHORT width, SHORT height);
-// void GoTo(SHORT posX, SHORT posY);
-// void mainMenu(listStudent &newList);
-// void exitMenu();
-// void inputMenu(listStudent &newList);
-// void outputMenu(listStudent newList);
-// void addMenu(listStudent &newList);
-// void deleteMenu(listStudent &newList);
 
 int main()
 {

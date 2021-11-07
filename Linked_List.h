@@ -28,10 +28,15 @@ struct listStudent
 	void remove(Node *node);
 	void removeHead();
 	void removeLast();
-	void findbyName();
-	void findbyMSSV();
+	Node *findbyName();
+	Node *findbyMSSV();
 	void removeByMSSV();
 	void removeByName();
+	void editMSSV(Node *node);
+	void editName(Node *node);
+	void editDateOfBirth(Node *node);
+	void editAddress(Node *node);
+	void editMark(Node *node);
 	// void PrintList();
 };
 
@@ -44,7 +49,7 @@ Node *createNode()
 	Node *p = new Node;
 	if (p == NULL)
 	{
-		cout << " Khong the them vao";
+		cout << "Không thể thêm vào";
 		return NULL; //thay return 0 bang return NULL vi kieu du lieu tra ve la node
 	}
 	p->data = sinhVien;
@@ -187,7 +192,7 @@ void listStudent::removeHead()
 {
 	if (isEmpty())
 	{
-		cout << "Error!!!" << endl;
+		cout << "Danh sách rỗng!!!" << endl;
 		return;
 	}
 	else
@@ -204,7 +209,7 @@ void listStudent::removeLast()
 {
 	if (isEmpty())
 	{
-		cout << "Error!!!" << endl;
+		cout << "Danh sách rỗng!!!" << endl;
 		return;
 	}
 	for (Node *p = head; p != NULL; p = p->next)
@@ -219,11 +224,11 @@ void listStudent::removeLast()
 	}
 }
 
-// xoa sinh vien o cuoi danh sach
+// xoa sinh vien theo mssv
 void listStudent::removeByMSSV()
 {
 	string mssv;
-	cout << "\tEnter MSSV you need to delete: ";
+	cout << "\tNhập MSSV bạn cần xóa : ";
 	fflush(stdin);
 	getline(cin, mssv);
 	Node *node = head;
@@ -232,6 +237,30 @@ void listStudent::removeByMSSV()
 		if (node->data.getMSSV() == mssv)
 		{
 			remove(node);
+			cout << "\tHoàn thành";
+			return;
+		}
+		else
+		{
+			node = node->next;
+		}
+	}
+}
+
+//xoa sinh vien theo ten
+void listStudent::removeByName()
+{
+	string name;
+	cout << "\tNhập tên sinh viên bạn cần xóa : ";
+	fflush(stdin);
+	getline(cin, name);
+	Node *node = head;
+	while (node != NULL)
+	{
+		if (node->data.getFullName() == name)
+		{
+			remove(node);
+			cout << "\tHoàn thành!";
 			return;
 		}
 		else
@@ -242,10 +271,10 @@ void listStudent::removeByMSSV()
 }
 
 // tim kiem sinh vien theo ten
-void listStudent::findbyName()
+Node *listStudent::findbyName() // sửa kiểu trả về từ void thành Node
 {
 	string name;
-	cout << "Enter Name you need to find: ";
+	cout << "\tNhập tên sinh viên bạn cần tìm : ";
 	fflush(stdin);
 	getline(cin, name);
 	Node *p = head;
@@ -254,21 +283,21 @@ void listStudent::findbyName()
 		// dung ham getFullName de tra ve fullname
 		if (p->data.getFullName() == name)
 		{
-			showNode(p);
-			return;
+			return p;
 		}
 		else
 		{
 			p = p->next;
 		}
 	}
+	return NULL; // thêm return NULL để khi không tìm thấy sẽ trả về NULL
 }
 
 // tim kiem sinh vien theo MSSV
-void listStudent::findbyMSSV()
+Node *listStudent::findbyMSSV() // sửa kiểu trả về từ void thành Node
 {
 	string MSSV;
-	cout << "Enter MSSV you need to find: ";
+	cout << "\tNhập mã số của sinh viên bạn cần tìm : ";
 	fflush(stdin);
 	getline(cin, MSSV);
 	Node *p = head;
@@ -277,41 +306,64 @@ void listStudent::findbyMSSV()
 		// dung ham get mssv de tra ve mssv
 		if (p->data.getMSSV() == MSSV)
 		{
-			showNode(p);
-			return;
+			return p;
 		}
 		else
 		{
 			p = p->next;
 		}
 	}
+	return NULL; // thêm return NULL để khi không tìm thấy sẽ trả về NULL
 }
 
-//duyet danh sach va in
-// void listStudent::PrintList()
-// {
-// 	// if (head ! = NULL)
-// 	// {
-// 	// 	Node *node = head;
-// 	// 	while (node = NULL)
-// 	// 	{
-// 	// 		cout << node->data << ' ';
-// 	// 		node = node->next;
-// 	// 	}
-// 	// }
+//khoi tao ham sua mssv
+void listStudent::editMSSV(Node *node)
+{
+	string MSSV;
+	cout << "\tNhập MSSV mới : ";
+	fflush(stdin);
+	getline(cin, MSSV);
+	node->data.setMSSV(MSSV);
+	cout << "\tHoàn thành!";
+}
 
-// 	if (isEmpty())
-// 	{
-// 		cout << "Error!!!";
-// 		return;
-// 	}
-// 	else
-// 	{
-// 		Node *node = head;
-// 		while (node != NULL)
-// 		{
-// 			cout << node->data;
-// 			node = node->next;
-// 		}
-// 	}
-// }
+//khoi tao ham sua ten
+void listStudent::editName(Node *node)
+{
+	string name;
+	cout << "\tNhập tên mới :  ";
+	fflush(stdin);
+	getline(cin, name);
+	node->data.setName(name);
+	cout << "\tHoàn thành!";
+}
+
+//khoi tao ham sua ngay sinh
+void listStudent::editDateOfBirth(Node *node)
+{
+	Date newDate;
+	cout << "\tNhập ngày sinh mới : ";
+	cin >> newDate;
+	node->data.setDateOfBirth(newDate);
+	cout << "\tHoàn thành!";
+}
+
+//khoi tao ham sua địa chỉ
+void listStudent::editAddress(Node *node)
+{
+	string newAddress;
+	cout << "\tNhập địa chỉ mới : ";
+	cin >> newAddress;
+	node->data.setAddress(newAddress);
+	cout << "\tHoàn thành!";
+}
+
+//khoi tao ham sua diem
+void listStudent::editMark(Node *node)
+{
+	Mark newMark;
+	cout << "\tNhập điểm số mới : ";
+	cin >> newMark;
+	node->data.setMark(newMark);
+	cout << "\tHoàn thành!";
+}
