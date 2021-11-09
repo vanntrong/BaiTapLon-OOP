@@ -12,6 +12,7 @@ void outputMenu(listStudent newList);
 void addMenu(listStudent &newList);
 void deleteMenu(listStudent &newList);
 void editMenu(listStudent &newList);
+void findMenu(listStudent &newlist);
 
 void SetWindowSize(SHORT width, SHORT height)
 {
@@ -239,6 +240,52 @@ void editMenu(listStudent &newList)
       }
     } while (choose != 6);
   }
+}
+
+void findMenu(listStudent &newList)
+{
+	int choose;
+  	do
+	{
+    system("cls");
+    GoTo(40, 2);
+    cout << "-------------------------------------------\n";
+    GoTo(53, 3);
+    cout << "TÌM KIẾM SINH VIÊN\n";
+    GoTo(40, 4);
+    cout << "-------------------------------------------\n";
+    GoTo(40, 5);
+    cout << "|     [1] Tìm kiếm Sinh Viên Theo Tên           |\n";
+    GoTo(40, 6);
+    cout << "|                                          |\n";
+    GoTo(40, 7);
+    cout << "|     [2] Tìm kiếm Sinh Viên Theo Mã Số         |\n";
+    GoTo(40, 8);
+    cout << "|                                          |\n";
+    GoTo(40, 9);
+    cout << "|     [3] Thoát                            |\n";
+    GoTo(42, 11);
+    cout << "  Nhập lựa chọn của bạn [1, 2, 3] : ";
+    cin >> choose;
+    switch (choose)
+    {
+    case 1:
+      system("cls");
+      cout << "\n\t\t\n";
+      newList.findbyName();
+      exitMenu();
+      break;
+    case 2:
+      system("cls");
+      cout << "\n\t\t\n";
+      newList.findbyMSSV();
+      exitMenu();
+      break;
+    case 3:
+      system("cls");
+      break;
+    }
+  } while (choose != 3);
 }
 
 void mainMenu(listStudent &newList)

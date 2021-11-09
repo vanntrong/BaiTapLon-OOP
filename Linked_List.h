@@ -187,6 +187,7 @@ void listStudent::remove(Node *node)
 	delete node;
 	size--;
 }
+
 // xoa mot sv dau danh sach
 void listStudent::removeHead()
 {
