@@ -258,6 +258,15 @@ void listStudent::removeByName()
 	Node *node = head;
 	while (node != NULL)
 	{
+	//	if (node->data.getFullName() != name)
+	//	{
+	//		cout << "Không có sinh viên này!!!\n";
+	//		cout << "Vui lòng nhập lại tên sinh viên: ";
+	//		fflush(stdin);
+	//		getline(cin, name);
+	//		Node *node = head;
+	//	}
+	//	else 
 		if (node->data.getFullName() == name)
 		{
 			remove(node);
