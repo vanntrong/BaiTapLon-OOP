@@ -235,6 +235,15 @@ void listStudent::removeByMSSV()
 	Node *node = head;
 	while (node != NULL)
 	{
+	//	if (node->data.getFullName() != mssv)
+	//	{
+	//		cout << "Không có sinh viên này!!!\n";
+	//		cout << "Vui lòng nhập lại MSSV: ";
+	//		fflush(stdin);
+	//		getline(cin, mssv);
+	//		Node *node = head;
+	//	}
+	//	else 
 		if (node->data.getMSSV() == mssv)
 		{
 			remove(node);
