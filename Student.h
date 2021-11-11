@@ -11,13 +11,24 @@ private:
   Mark newMark;
 
 public:
+  Student();
   friend std::istream &operator>>(std::istream &is, Student &newStudent);
   friend std::ostream &operator<<(std::ostream &os, Student &newStudent);
   string getFullName();
   string getMSSV();
+  float getGPA();
   void setMSSV(string newMSSV);
   void setMark(Mark newMark);
 };
+
+Student::Student()
+{
+  // MSSV = "";
+  // fullName = "";
+  // dateOfBirth.day = dateOfBirth.month = dateOfBirth.year = 0;
+  // address = "";
+  // newMark.GPA = newMark.extraPoint = newMark.trainingPoint = 0;
+}
 
 std::istream &operator>>(std::istream &is, Student &newStudent)
 {
@@ -55,6 +66,11 @@ string Student::getFullName()
 string Student::getMSSV()
 {
   return MSSV;
+}
+
+float Student::getGPA()
+{
+  return GPA;
 }
 
 //ham sua mssv

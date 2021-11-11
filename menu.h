@@ -13,6 +13,7 @@ void addMenu(listStudent &newList);
 void deleteMenu(listStudent &newList);
 void editMenu(listStudent &newList);
 void findMenu(listStudent &newlist);
+void sortMenu(listStudent &newList);
 
 void SetWindowSize(SHORT width, SHORT height)
 {
@@ -348,6 +349,59 @@ void findMenu(listStudent &newList)
   } while (choose != 3);
 }
 
+void sortMenu(listStudent &newList)
+{
+  int choose;
+  do
+  {
+    system("cls");
+    GoTo(40, 2);
+    cout << "-------------------------------------------\n";
+    GoTo(53, 3);
+    cout << "SẮP XẾP SINH VIÊN\n";
+    GoTo(40, 4);
+    cout << "-------------------------------------------\n";
+    GoTo(40, 5);
+    cout << "|     [1] Sắp Xếp Sinh Viên Theo Tên       |\n";
+    GoTo(40, 6);
+    cout << "|                                          |\n";
+    GoTo(40, 7);
+    cout << "|     [2] Sắp Xếp Sinh Viên Theo Mã Số     |\n";
+    GoTo(40, 8);
+    cout << "|                                          |\n";
+    GoTo(40, 9);
+    cout << "|     [3] Sắp Xếp Sinh Viên Theo Điểm TB   |\n";
+    GoTo(40, 10);
+    cout << "|                                          |\n";
+    GoTo(40, 11);
+    cout << "|     [4] Thoát                            |\n";
+    GoTo(42, 13);
+    cout << "  Nhập lựa chọn của bạn [1, 2, 3, 4] : ";
+    cin >> choose;
+    switch (choose)
+    {
+    case 1:
+      newList.sortByName();
+      exitMenu();
+      break;
+    case 2:
+      newList.sortByMSSV();
+      exitMenu();
+      break;
+    case 3:
+      newList.sortByMark();
+      exitMenu();
+      break;
+    case 4:
+      system("cls");
+      break;
+    default:
+      cout << "Vui lòng nhập lựa chọn [1, 2, 3, 4] : ";
+      break;
+    }
+  } while (choose != 4);
+}
+
 void mainMenu(listStudent &newList)
 {
   system("COLOR 70");
@@ -402,6 +456,9 @@ void mainMenu(listStudent &newList)
       break;
     case 6:
       findMenu(newList);
+      break;
+    case 7:
+      sortMenu(newList);
       break;
 
     default:

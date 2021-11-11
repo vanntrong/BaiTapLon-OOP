@@ -10,12 +10,20 @@ protected:
   string address;
 
 public:
+  People();
   void Input();
   void Output();
   void setName(string newName);
   void setDateOfBirth(Date newDate);
   void setAddress(string newAddress);
 };
+
+People::People() : Date()
+{
+  fullName = "";
+  // Date::Date();
+  address = "";
+}
 
 //overloading ham nhap
 void People::Input()

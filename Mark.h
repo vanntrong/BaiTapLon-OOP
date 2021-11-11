@@ -4,7 +4,7 @@
 
 class Mark
 {
-private:
+protected:
 	float GPA;					 //diem trung binh
 	float trainingPoint; //diem ren luyen
 	float extraPoint;		 //diem cong

@@ -37,7 +37,9 @@ struct listStudent
 	void editDateOfBirth(Node *node);
 	void editAddress(Node *node);
 	void editMark(Node *node);
-	// void PrintList();
+	void sortByName();
+	void sortByMSSV();
+	void sortByMark();
 };
 
 using namespace std;
@@ -77,7 +79,6 @@ listStudent::listStudent()
 	size = 0;
 }
 
-//kiem tra danh sach co rong khong
 bool listStudent::isEmpty()
 {
 	if (head == NULL)
@@ -87,7 +88,6 @@ bool listStudent::isEmpty()
 	return false;
 }
 
-//xuat danh sach
 void listStudent::showList()
 {
 	Node *node = head;
@@ -103,7 +103,6 @@ void listStudent::showList()
 	cout << "\t------------------------" << endl;
 }
 
-//them mot sinh vien vao dau danh sach
 void listStudent::addFirst()
 {
 	Node *p = createNode();
@@ -113,7 +112,7 @@ void listStudent::addFirst()
 		tail = p;
 	size++;
 }
-//them mot sinh vien vao cuoi danh sach
+
 void listStudent::addLast()
 {
 	Node *node = createNode();
@@ -144,7 +143,6 @@ void listStudent::addLast(Node *node)
 	size++;
 }
 
-// them mot node moi vao sau mot node
 void listStudent::insertAfter(Node *node)
 {
 	if (node == tail)
@@ -160,7 +158,6 @@ void listStudent::insertAfter(Node *node)
 	size++;
 }
 
-//tim mot node truoc node chi dinh
 Node *listStudent::previous(Node *node)
 {
 	Node *previousNode = head;
@@ -169,7 +166,6 @@ Node *listStudent::previous(Node *node)
 	return previousNode;
 }
 
-// xoa mot sinh vien bat ki
 void listStudent::remove(Node *node)
 {
 	if (node == head)
@@ -188,7 +184,6 @@ void listStudent::remove(Node *node)
 	size--;
 }
 
-// xoa mot sv dau danh sach
 void listStudent::removeHead()
 {
 	if (isEmpty())
@@ -205,7 +200,6 @@ void listStudent::removeHead()
 	}
 }
 
-// xoa sinh vien cuoi danh sach
 void listStudent::removeLast()
 {
 	if (isEmpty())
@@ -225,7 +219,6 @@ void listStudent::removeLast()
 	}
 }
 
-// xoa sinh vien theo mssv
 void listStudent::removeByMSSV()
 {
 	string mssv;
@@ -235,15 +228,15 @@ void listStudent::removeByMSSV()
 	Node *node = head;
 	while (node != NULL)
 	{
-	//	if (node->data.getFullName() != mssv)
-	//	{
-	//		cout << "Không có sinh viên này!!!\n";
-	//		cout << "Vui lòng nhập lại MSSV: ";
-	//		fflush(stdin);
-	//		getline(cin, mssv);
-	//		Node *node = head;
-	//	}
-	//	else 
+		//	if (node->data.getFullName() != mssv)
+		//	{
+		//		cout << "Không có sinh viên này!!!\n";
+		//		cout << "Vui lòng nhập lại MSSV: ";
+		//		fflush(stdin);
+		//		getline(cin, mssv);
+		//		Node *node = head;
+		//	}
+		//	else
 		if (node->data.getMSSV() == mssv)
 		{
 			remove(node);
@@ -257,7 +250,6 @@ void listStudent::removeByMSSV()
 	}
 }
 
-//xoa sinh vien theo ten
 void listStudent::removeByName()
 {
 	string name;
@@ -267,15 +259,15 @@ void listStudent::removeByName()
 	Node *node = head;
 	while (node != NULL)
 	{
-	//	if (node->data.getFullName() != name)
-	//	{
-	//		cout << "Không có sinh viên này!!!\n";
-	//		cout << "Vui lòng nhập lại tên sinh viên: ";
-	//		fflush(stdin);
-	//		getline(cin, name);
-	//		Node *node = head;
-	//	}
-	//	else 
+		//	if (node->data.getFullName() != name)
+		//	{
+		//		cout << "Không có sinh viên này!!!\n";
+		//		cout << "Vui lòng nhập lại tên sinh viên: ";
+		//		fflush(stdin);
+		//		getline(cin, name);
+		//		Node *node = head;
+		//	}
+		//	else
 		if (node->data.getFullName() == name)
 		{
 			remove(node);
@@ -289,7 +281,6 @@ void listStudent::removeByName()
 	}
 }
 
-// tim kiem sinh vien theo ten
 Node *listStudent::findbyName() // sửa kiểu trả về từ void thành Node
 {
 	string name;
@@ -312,7 +303,6 @@ Node *listStudent::findbyName() // sửa kiểu trả về từ void thành Node
 	return NULL; // thêm return NULL để khi không tìm thấy sẽ trả về NULL
 }
 
-// tim kiem sinh vien theo MSSV
 Node *listStudent::findbyMSSV() // sửa kiểu trả về từ void thành Node
 {
 	string MSSV;
@@ -335,7 +325,6 @@ Node *listStudent::findbyMSSV() // sửa kiểu trả về từ void thành Node
 	return NULL; // thêm return NULL để khi không tìm thấy sẽ trả về NULL
 }
 
-//khoi tao ham sua mssv
 void listStudent::editMSSV(Node *node)
 {
 	string MSSV;
@@ -346,7 +335,6 @@ void listStudent::editMSSV(Node *node)
 	cout << "\tHoàn thành!";
 }
 
-//khoi tao ham sua ten
 void listStudent::editName(Node *node)
 {
 	string name;
@@ -357,7 +345,6 @@ void listStudent::editName(Node *node)
 	cout << "\tHoàn thành!";
 }
 
-//khoi tao ham sua ngay sinh
 void listStudent::editDateOfBirth(Node *node)
 {
 	Date newDate;
@@ -367,7 +354,6 @@ void listStudent::editDateOfBirth(Node *node)
 	cout << "\tHoàn thành!";
 }
 
-//khoi tao ham sua địa chỉ
 void listStudent::editAddress(Node *node)
 {
 	string newAddress;
@@ -377,12 +363,63 @@ void listStudent::editAddress(Node *node)
 	cout << "\tHoàn thành!";
 }
 
-//khoi tao ham sua diem
 void listStudent::editMark(Node *node)
 {
 	Mark newMark;
 	cout << "\tNhập điểm số mới : ";
 	cin >> newMark;
 	node->data.setMark(newMark);
+	cout << "\tHoàn thành!";
+}
+
+void swapNode(Node *node1, Node *node2)
+{
+	Student temp = node1->data;
+	node1->data = node2->data;
+	node2->data = temp;
+}
+
+void listStudent::sortByName()
+{
+	for (Node *node1 = head; node1 != NULL; node1 = node1->next)
+	{
+		for (Node *node2 = node1->next; node2 != NULL; node2 = node2->next)
+		{
+			if (node1->data.getFullName() > node2->data.getFullName())
+			{
+				swapNode(node1, node2);
+			}
+		}
+	}
+	cout << "\tHoàn thành!";
+}
+
+void listStudent::sortByMSSV()
+{
+	for (Node *node1 = head; node1 != NULL; node1 = node1->next)
+	{
+		for (Node *node2 = node1->next; node2 != NULL; node2 = node2->next)
+		{
+			if (node1->data.getMSSV() > node2->data.getMSSV())
+			{
+				swapNode(node1, node2);
+			}
+		}
+	}
+	cout << "\tHoàn thành!";
+}
+
+void listStudent::sortByMark()
+{
+	for (Node *node1 = head; node1 != NULL; node1 = node1->next)
+	{
+		for (Node *node2 = node1->next; node2 != NULL; node2 = node2->next)
+		{
+			if (node1->data.getGPA() > node2->data.getGPA())
+			{
+				swapNode(node1, node2);
+			}
+		}
+	}
 	cout << "\tHoàn thành!";
 }
