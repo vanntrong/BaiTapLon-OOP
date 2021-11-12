@@ -1,6 +1,7 @@
 ﻿
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "Student.h"
 
 struct Node
@@ -40,6 +41,8 @@ struct listStudent
 	void sortByName();
 	void sortByMSSV();
 	void sortByMark();
+	void studyWarning();
+	void writeFile();
 };
 
 using namespace std;
@@ -367,7 +370,8 @@ void listStudent::editMark(Node *node)
 {
 	Mark newMark;
 	cout << "\tNhập điểm số mới : ";
-	cin >> newMark;
+	// cin >> newMark;
+	newMark.Input2();
 	node->data.setMark(newMark);
 	cout << "\tHoàn thành!";
 }
@@ -422,4 +426,40 @@ void listStudent::sortByMark()
 		}
 	}
 	cout << "\tHoàn thành!";
+}
+
+void listStudent::studyWarning()
+{
+	int sizeWarning = 0;
+	Node *node = head;
+	while (node != NULL)
+	{
+		if (node->data.getGPA() < 4)
+		{
+			showNode(node);
+			sizeWarning++;
+		}
+		node = node->next;
+	}
+	if (sizeWarning == 0)
+	{
+		cout << "\t\t\t\t\tKhông có sinh viên bị cảnh cáo học tập";
+	}
+}
+
+void listStudent::writeFile()
+{
+	fstream fileSV;
+	fileSV.open("Student.txt", ios::out | ios::app);
+	fileSV << "STT\t\t\tMã sinh viên\t\t\tHọ và tên\t\t\tNgày sinh\t\t\tĐịa chỉ\t\t\tĐiểm trung bình\t\t\tĐiểm rèn luyện\t\t\tĐiểm cộng" << endl;
+	Node *node = head;
+	int i = 0;
+	while (node != NULL)
+	{
+		fileSV << " " << i + 1 << "\t\t\t" << node->data.getMSSV() << "\t\t\t" << node->data.getFullName() << "\t\t" << node->data.getDay() << "/" << node->data.getMonth() << "/" << node->data.getYear() << "\t\t" << node->data.getAddress() << "\t\t\t\t" << node->data.getGPA() << "\t\t\t\t" << node->data.getTrainingPoint() << "\t\t\t\t" << node->data.getExtraPoint() << endl;
+
+		node = node->next;
+	}
+	fileSV.close();
+	cout << "\tHoàn thành";
 }

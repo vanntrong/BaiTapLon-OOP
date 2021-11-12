@@ -4,7 +4,7 @@
 
 class Mark
 {
-protected:
+private:
 	float GPA;					 //diem trung binh
 	float trainingPoint; //diem ren luyen
 	float extraPoint;		 //diem cong
@@ -12,17 +12,19 @@ public:
 	Mark();
 	Mark(float GPA, float trainingPoint, float extraPoint);
 	~Mark();
-	friend std::istream &operator>>(std::istream &is, Mark &newMark);
-	friend std::ostream &operator<<(std::ostream &os, const Mark &newMark);
+	float getGPA();
+	float getTrainingPoint();
+	float getExtraPoint();
+	void Input2();
+	void OutPut2();
+	void setMark(Mark newMark);
 };
 
-// Khai bao khong doi so
 Mark::Mark()
 {
 	this->GPA = this->trainingPoint = this->extraPoint = 0;
 }
 
-// Khai bao co doi so
 Mark::Mark(float GPA, float trainingPoint, float extraPoint)
 {
 	this->GPA = GPA;
@@ -30,31 +32,48 @@ Mark::Mark(float GPA, float trainingPoint, float extraPoint)
 	this->extraPoint = extraPoint;
 }
 
-//Ham huy
 Mark::~Mark()
 {
 }
 
-//oveloading ham nhap
-std::istream &operator>>(std::istream &is, Mark &newMark)
+void Mark::Input2()
 {
 	std::cout
 			<< "\t--------Nhập điểm--------" << std::endl;
 	std::cout << "\tNhập điểm trung bình : ";
-	is >> newMark.GPA;
+	std::cin >> this->GPA;
 	std::cout << "\tNhập điểm rèn luyện: ";
-	is >> newMark.trainingPoint;
+	std::cin >> this->trainingPoint;
 	std::cout << "\tNhập điểm cộng : ";
-	is >> newMark.extraPoint;
+	std::cin >> this->extraPoint;
 	std::cout << "\t--------------------------" << std::endl;
-	return is;
 }
 
-//overloading ham xuat
-std::ostream &operator<<(std::ostream &os, const Mark &newMark)
+void Mark::OutPut2()
 {
-	os << "\tĐiểm trung bình : " << newMark.GPA << std::endl;
-	os << "\tĐiểm rèn luyện :  " << newMark.trainingPoint << std::endl;
-	os << "\tĐiểm cộng : " << newMark.extraPoint << std::endl;
-	return os;
+	std::cout << "\tĐiểm trung bình : " << this->GPA << std::endl;
+	std::cout << "\tĐiểm rèn luyện :  " << this->trainingPoint << std::endl;
+	std::cout << "\tĐiểm cộng : " << this->extraPoint << std::endl;
+}
+
+float Mark::getGPA()
+{
+	return GPA;
+}
+
+float Mark::getTrainingPoint()
+{
+	return trainingPoint;
+}
+
+float Mark::getExtraPoint()
+{
+	return trainingPoint;
+}
+
+void Mark::setMark(Mark newMark)
+{
+	this->GPA = newMark.GPA;
+	this->extraPoint = newMark.extraPoint;
+	this->trainingPoint = newMark.trainingPoint;
 }

@@ -14,6 +14,8 @@ void deleteMenu(listStudent &newList);
 void editMenu(listStudent &newList);
 void findMenu(listStudent &newlist);
 void sortMenu(listStudent &newList);
+void studyWarningMenu(listStudent &newList);
+void writeFileMenu(listStudent &newList);
 
 void SetWindowSize(SHORT width, SHORT height)
 {
@@ -301,6 +303,7 @@ void findMenu(listStudent &newList)
       else
       {
         showNode(node);
+        exitMenu();
       }
       system("cls");
       break;
@@ -336,6 +339,7 @@ void findMenu(listStudent &newList)
       else
       {
         showNode(node);
+        exitMenu();
       }
       system("cls");
       break;
@@ -402,6 +406,32 @@ void sortMenu(listStudent &newList)
   } while (choose != 4);
 }
 
+void studyWarningMenu(listStudent &newList)
+{
+  system("cls");
+  GoTo(40, 2);
+  cout << "-------------------------------------------\n";
+  GoTo(42, 3);
+  cout << "DANH SÁCH SINH VIÊN BỊ CẢNH CÁO HỌC TẬP\n";
+  GoTo(40, 4);
+  cout << "-------------------------------------------\n";
+  newList.studyWarning();
+  exitMenu();
+}
+
+void writeFileMenu(listStudent &newList)
+{
+  system("cls");
+  GoTo(40, 2);
+  cout << "-------------------------------------------\n";
+  GoTo(48, 3);
+  cout << "GHI DANH SÁCH VÀO FILE\n";
+  GoTo(40, 4);
+  cout << "-------------------------------------------\n";
+  newList.writeFile();
+  exitMenu();
+}
+
 void mainMenu(listStudent &newList)
 {
   system("COLOR 70");
@@ -459,6 +489,12 @@ void mainMenu(listStudent &newList)
       break;
     case 7:
       sortMenu(newList);
+      break;
+    case 8:
+      studyWarningMenu(newList);
+      break;
+    case 9:
+      writeFileMenu(newList);
       break;
 
     default:

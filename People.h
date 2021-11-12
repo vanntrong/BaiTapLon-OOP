@@ -4,7 +4,7 @@ using namespace std;
 
 class People : public Date
 {
-protected:
+private:
   string fullName;
   Date dateOfBirth;
   string address;
@@ -13,6 +13,11 @@ public:
   People();
   void Input();
   void Output();
+  string getFullName();
+  string getAddress();
+  int getDay();
+  int getMonth();
+  int getYear();
   void setName(string newName);
   void setDateOfBirth(Date newDate);
   void setAddress(string newAddress);
@@ -21,11 +26,9 @@ public:
 People::People() : Date()
 {
   fullName = "";
-  // Date::Date();
   address = "";
 }
 
-//overloading ham nhap
 void People::Input()
 {
   std::cout << std::endl
@@ -41,7 +44,6 @@ void People::Input()
   std::cout << "\t--------------------------" << std::endl;
 }
 
-//overloading ham xuat
 void People::Output()
 {
   std::cout << "\tHọ và tên : " << this->fullName << std::endl;
@@ -50,19 +52,41 @@ void People::Output()
   std::cout << "\tĐịa chỉ : " << this->address << std::endl;
 }
 
-//ham sua ten
+string People::getFullName()
+{
+  return fullName;
+}
+
+string People::getAddress()
+{
+  return address;
+}
+
+int People::getDay()
+{
+  return dateOfBirth.day;
+}
+
+int People::getMonth()
+{
+  return dateOfBirth.month;
+}
+
+int People::getYear()
+{
+  return dateOfBirth.year;
+}
+
 void People::setName(string newName)
 {
   this->fullName = newName;
 }
 
-//ham sua ngay sinh
 void People::setDateOfBirth(Date newDate)
 {
   this->dateOfBirth = newDate;
 }
 
-//ham sua dia chi
 void People::setAddress(string newAddress)
 {
   this->address = newAddress;
