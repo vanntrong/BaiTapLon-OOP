@@ -14,5 +14,6 @@ int main()
   // newList.removeHead();
   // newList.showList();
   // system("COLOR 70");
-  system("\t\tpause");
+  cout << "\t";
+  exitMenu();
 }
