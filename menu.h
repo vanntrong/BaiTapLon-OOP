@@ -3,7 +3,6 @@
 #include <conio.h>
 #include <windows.h>
 
-void SetWindowSize(SHORT width, SHORT height);
 void GoTo(SHORT posX, SHORT posY);
 void mainMenu(listStudent &newList);
 void exitMenu();
@@ -16,19 +15,6 @@ void findMenu(listStudent &newlist);
 void sortMenu(listStudent &newList);
 void studyWarningMenu(listStudent &newList);
 void writeFileMenu(listStudent &newList);
-
-void SetWindowSize(SHORT width, SHORT height)
-{
-  HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-
-  SMALL_RECT WindowSize;
-  WindowSize.Top = 0;
-  WindowSize.Left = 0;
-  WindowSize.Right = width;
-  WindowSize.Bottom = height;
-
-  SetConsoleWindowInfo(hStdout, 1, &WindowSize);
-}
 
 void GoTo(SHORT posX, SHORT posY)
 {
@@ -73,10 +59,16 @@ void outputMenu(listStudent newList)
   system("cls");
   GoTo(40, 2);
   cout << "-------------------------------------\n";
-  GoTo(45, 3);
+  GoTo(47, 3);
   cout << "DANH SÁCH SINH VIÊN\n";
+  GoTo(40, 4);
+  cout << "-------------------------------------\n";
+  for (int i = 0; i < 90; i++)
+  {
+    cout << "--";
+  }
+  cout << "\n||STT\t\t||MSSV\t\t\t||Họ và tên\t\t\t||Ngày sinh\t\t||Địa chỉ\t\t||Điểm trung bình\t||Điểm rèn luyện\t||Điểm cộng\n";
   newList.showList();
-  cout << "\tHOÀN THÀNH!";
   exitMenu();
 }
 
@@ -437,7 +429,6 @@ void mainMenu(listStudent &newList)
   system("COLOR 70");
   SetConsoleOutputCP(65001); //hien thi ky tu dac biet
   SetConsoleTitle("Quan Ly Sinh Vien");
-  SetWindowSize(200, 200);
   int choose;
   do
   {

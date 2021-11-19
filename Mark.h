@@ -51,9 +51,9 @@ void Mark::Input2()
 
 void Mark::OutPut2()
 {
-	std::cout << "\tĐiểm trung bình : " << this->GPA << std::endl;
-	std::cout << "\tĐiểm rèn luyện :  " << this->trainingPoint << std::endl;
-	std::cout << "\tĐiểm cộng : " << this->extraPoint << std::endl;
+	std::cout << "||" << this->GPA << "\t\t\t";
+	std::cout << "||" << this->trainingPoint << "\t\t\t";
+	std::cout << "||" << this->extraPoint << "\t\t\t\n";
 }
 
 float Mark::getGPA()

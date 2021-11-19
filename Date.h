@@ -47,12 +47,13 @@ std::istream &operator>>(std::istream &is, Date &newDate)
   is >> newDate.month;
   std::cout << "\tNhập năm : ";
   is >> newDate.year;
+  std::cout << std::endl;
   return is;
 }
 
 //overloading ham xuat
 std::ostream &operator<<(std::ostream &os, const Date &newDate)
 {
-  os << newDate.day << "/" << newDate.month << "/" << newDate.year << std::endl;
+  os << newDate.day << "/" << newDate.month << "/" << newDate.year;
   return os;
 }

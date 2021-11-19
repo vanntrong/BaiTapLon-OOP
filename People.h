@@ -31,8 +31,6 @@ People::People() : Date()
 
 void People::Input()
 {
-  std::cout << std::endl
-            << "\t--------Nhập thông tin--------" << std::endl;
   std::cout << "\tNhập tên đầy đủ : ";
   fflush(stdin);
   getline(cin, this->fullName);
@@ -41,15 +39,15 @@ void People::Input()
   std::cout << "\tNhập địa chỉ : ";
   fflush(stdin);
   getline(cin, this->address);
-  std::cout << "\t--------------------------" << std::endl;
 }
 
 void People::Output()
 {
-  std::cout << "\tHọ và tên : " << this->fullName << std::endl;
-  std::cout << "\tNgày sinh : ";
-  std::cout << this->dateOfBirth;
-  std::cout << "\tĐịa chỉ : " << this->address << std::endl;
+  std::cout << "||" << this->fullName << "\t\t\t";
+  std::cout << "||";
+  std::cout << this->dateOfBirth << "\t\t";
+  std::cout << "||";
+  std::cout << this->address << "\t\t";
 }
 
 string People::getFullName()

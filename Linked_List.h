@@ -95,15 +95,13 @@ void listStudent::showList()
 {
 	Node *node = head;
 	int i = 0;
-	cout << "\t----------List----------" << endl;
 	while (node != NULL)
 	{
-		cout << "\tStudent " << i + 1 << ": " << endl;
+		cout << "||" << i + 1 << "\t";
 		showNode(node);
 		node = node->next;
 		i++;
 	}
-	cout << "\t------------------------" << endl;
 }
 
 void listStudent::addFirst()

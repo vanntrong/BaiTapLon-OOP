@@ -25,9 +25,9 @@ Student::Student()
 std::istream &operator>>(std::istream &is, Student &newStudent)
 {
   std::cout << std::endl
-            << "\t**********Input**********" << std::endl
+            << "\t**********Nhập thông tin**********" << std::endl
             << std::endl;
-  std::cout << "\tInput MSSV: ";
+  std::cout << "\tNhập MSSV: ";
   is >> newStudent.MSSV;
   newStudent.Input();
   newStudent.Input2();
@@ -38,13 +38,16 @@ std::istream &operator>>(std::istream &is, Student &newStudent)
 
 std::ostream &operator<<(std::ostream &os, Student &newStudent)
 {
-  os << std::endl
-     << "\t**********Information**********" << std::endl
-     << std::endl;
-  os << "\tMSSV: " << newStudent.MSSV << std::endl;
+  // os << std::endl
+  //    << "\t**********Information**********" << std::endl
+  //    << std::endl;
+  // os << "\tMSSV: " << newStudent.MSSV << std::endl;
+  // newStudent.Output();
+  // newStudent.OutPut2();
+  // os << "\t*******************************" << std::endl;
+  os << "||" << newStudent.MSSV << "\t\t";
   newStudent.Output();
   newStudent.OutPut2();
-  os << "\t*******************************" << std::endl;
   return os;
 }
 
