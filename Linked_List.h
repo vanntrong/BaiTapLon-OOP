@@ -428,7 +428,7 @@ void listStudent::studyWarning()
 	{
 		if (node->data.getGPA() < 4)
 		{
-			cout << "||" << i + 1 << "\t";
+			cout << "||" << sizeWarning + 1 << "\t";
 			showNode(node);
 			sizeWarning++;
 		}

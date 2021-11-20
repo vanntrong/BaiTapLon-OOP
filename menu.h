@@ -39,11 +39,11 @@ void exitMenu()
 
 void outputSub()
 {
-  for (int i = 0; i < 110; i++)
+  for (int i = 0; i < 106; i++)
   {
     cout << "--";
   }
-  cout << "\n||STT\t\t||MSSV\t\t\t||Họ và tên\t\t\t\t||Ngày sinh\t\t\t||Địa chỉ\t\t\t||Ngành học\t\t||Điểm trung bình\t||Điểm rèn luyện\t||Điểm cộng\n";
+  cout << "\n||STT\t\t||MSSV\t\t\t||Họ và tên\t\t\t||Ngày sinh\t\t\t||Địa chỉ\t\t||Ngành học\t\t||Điểm trung bình\t||Điểm rèn luyện\t||Điểm cộng\n";
 }
 
 void inputMenu(listStudent &newList)

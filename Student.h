@@ -44,7 +44,7 @@ std::ostream &operator<<(std::ostream &os, Student &newStudent)
 {
   os << "||" << newStudent.MSSV << "\t\t";
   newStudent.Output();
-  os << "||" << newStudent.major << "\t";
+  os << "||" << newStudent.major << "\t\t";
   newStudent.OutPut2();
   return os;
 }
