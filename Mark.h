@@ -53,7 +53,7 @@ void Mark::OutPut2()
 {
 	std::cout << "||" << this->GPA << "\t\t\t";
 	std::cout << "||" << this->trainingPoint << "\t\t\t";
-	std::cout << "||" << this->extraPoint << "\t\t\t\n";
+	std::cout << "||" << this->extraPoint << "\t\t\t";
 }
 
 float Mark::getGPA()

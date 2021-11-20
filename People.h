@@ -43,11 +43,11 @@ void People::Input()
 
 void People::Output()
 {
-  std::cout << "||" << this->fullName << "\t\t\t";
+  std::cout << "||" << this->fullName << "\t\t\t\t";
   std::cout << "||";
-  std::cout << this->dateOfBirth << "\t\t";
+  std::cout << this->dateOfBirth << "\t\t\t";
   std::cout << "||";
-  std::cout << this->address << "\t\t";
+  std::cout << this->address << "\t\t\t";
 }
 
 string People::getFullName()

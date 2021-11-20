@@ -8,14 +8,16 @@ class Student : public People, public Mark
 {
 private:
   string MSSV;
-  // Mark newMark;
+  string major;
 
 public:
   Student();
   friend std::istream &operator>>(std::istream &is, Student &newStudent);
   friend std::ostream &operator<<(std::ostream &os, Student &newStudent);
   string getMSSV();
+  string getMajor();
   void setMSSV(string newMSSV);
+  void setMajor(string newMajor);
 };
 
 Student::Student()
@@ -30,6 +32,8 @@ std::istream &operator>>(std::istream &is, Student &newStudent)
   std::cout << "\tNhập MSSV: ";
   is >> newStudent.MSSV;
   newStudent.Input();
+  std::cout << "\tNhập ngành học: ";
+  getline(is, newStudent.major);
   newStudent.Input2();
   std::cout << std::endl
             << "\t*************************" << std::endl;
@@ -38,15 +42,9 @@ std::istream &operator>>(std::istream &is, Student &newStudent)
 
 std::ostream &operator<<(std::ostream &os, Student &newStudent)
 {
-  // os << std::endl
-  //    << "\t**********Information**********" << std::endl
-  //    << std::endl;
-  // os << "\tMSSV: " << newStudent.MSSV << std::endl;
-  // newStudent.Output();
-  // newStudent.OutPut2();
-  // os << "\t*******************************" << std::endl;
   os << "||" << newStudent.MSSV << "\t\t";
   newStudent.Output();
+  os << "||" << newStudent.major << "\t";
   newStudent.OutPut2();
   return os;
 }
@@ -56,7 +54,17 @@ string Student::getMSSV()
   return MSSV;
 }
 
+string Student::getMajor()
+{
+  return major;
+}
+
 void Student::setMSSV(string newMSSV)
 {
   this->MSSV = newMSSV;
+}
+
+void Student::setMajor(string newMajor)
+{
+  this->major = newMajor;
 }

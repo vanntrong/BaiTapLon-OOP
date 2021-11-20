@@ -15,6 +15,7 @@ void findMenu(listStudent &newlist);
 void sortMenu(listStudent &newList);
 void studyWarningMenu(listStudent &newList);
 void writeFileMenu(listStudent &newList);
+void outputSub();
 
 void GoTo(SHORT posX, SHORT posY)
 {
@@ -34,6 +35,15 @@ void exitMenu()
   // cin >> choose;
   choose = getch();
   system("cls");
+}
+
+void outputSub()
+{
+  for (int i = 0; i < 110; i++)
+  {
+    cout << "--";
+  }
+  cout << "\n||STT\t\t||MSSV\t\t\t||Họ và tên\t\t\t\t||Ngày sinh\t\t\t||Địa chỉ\t\t\t||Ngành học\t\t||Điểm trung bình\t||Điểm rèn luyện\t||Điểm cộng\n";
 }
 
 void inputMenu(listStudent &newList)
@@ -63,11 +73,7 @@ void outputMenu(listStudent newList)
   cout << "DANH SÁCH SINH VIÊN\n";
   GoTo(40, 4);
   cout << "-------------------------------------\n";
-  for (int i = 0; i < 90; i++)
-  {
-    cout << "--";
-  }
-  cout << "\n||STT\t\t||MSSV\t\t\t||Họ và tên\t\t\t||Ngày sinh\t\t||Địa chỉ\t\t||Điểm trung bình\t||Điểm rèn luyện\t||Điểm cộng\n";
+  outputSub();
   newList.showList();
   exitMenu();
 }
@@ -115,15 +121,12 @@ void deleteMenu(listStudent &newList)
       cout << "\n\t\t\n";
       newList.removeByName();
       exitMenu();
-      // newList.removeByName();
       break;
     case 2:
       system("cls");
       cout << "\n\t\t\n";
       newList.removeByMSSV();
       exitMenu();
-      // char n;
-      // cout << "\t\tNhấn phím bất kì để tiếp tục...";
       break;
     case 3:
       system("cls");
@@ -193,9 +196,13 @@ void editMenu(listStudent &newList)
       GoTo(40, 14);
       cout << "|                                          |\n";
       GoTo(40, 15);
-      cout << "|     [6] Thoát                            |\n";
-      GoTo(42, 17);
-      cout << "  Nhập lựa chọn của bạn [1, 2, 3, 4, 5, 6] : ";
+      cout << "|     [6] Sửa Ngành Học Sinh Viên          |\n";
+      GoTo(40, 16);
+      cout << "|                                          |\n";
+      GoTo(40, 17);
+      cout << "|     [7] Thoát                            |\n";
+      GoTo(42, 19);
+      cout << "  Nhập lựa chọn của bạn [1, 2, 3, 4, 5, 6, 7] : ";
       cin >> choose;
       switch (choose)
       {
@@ -231,9 +238,15 @@ void editMenu(listStudent &newList)
         break;
       case 6:
         system("cls");
+        cout << "\n\t\t\n";
+        newList.editMajor(node);
+        exitMenu();
+        break;
+      case 7:
+        system("cls");
         break;
       }
-    } while (choose != 6);
+    } while (choose != 7);
   }
 }
 
@@ -274,29 +287,51 @@ void findMenu(listStudent &newList)
       GoTo(40, 4);
       cout << "-------------------------------------------\n";
       GoTo(38, 5);
-      Node *node = newList.findbyName();
-      if (node == NULL)
+      Node *node = newList.head;
+      string name;
+      cout << "\tNhập tên sinh viên bạn cần tìm : ";
+      fflush(stdin);
+      getline(cin, name);
+      outputSub();
+      int i = 0;
+      while (node != NULL)
       {
-        GoTo(40, 7);
+        if (node->data.getFullName().find(name) != string::npos)
+        {
+          cout << "||" << i + 1 << "\t";
+          showNode(node);
+          i++;
+        }
+        node = node->next;
+      }
+      if (i == 0)
+      {
+        system("cls");
+        GoTo(40, 2);
+        cout << "-------------------------------------------\n";
+        GoTo(53, 3);
+        cout << "TÌM KIẾM SINH VIÊN\n";
+        GoTo(40, 4);
+        cout << "-------------------------------------------\n";
+        GoTo(40, 5);
         cout << "Không tìm thấy sinh viên này!!!\n";
         char newChoose;
-        GoTo(40, 8);
+        GoTo(40, 6);
         cout << "Bạn có muốn tiếp tục (Nhấn Y để tiếp tục) : ";
         cin >> newChoose;
         if (newChoose == 'y' || newChoose == 'Y')
         {
           system("cls");
+          findMenu(newList);
         }
         else
         {
           choose = 3;
+          system("cls");
+          break;
         }
       }
-      else
-      {
-        showNode(node);
-        exitMenu();
-      }
+      exitMenu();
       system("cls");
       break;
     }
@@ -310,29 +345,48 @@ void findMenu(listStudent &newList)
       GoTo(40, 4);
       cout << "-------------------------------------------\n";
       GoTo(38, 5);
-      Node *node = newList.findbyMSSV();
-      if (node == NULL)
+      Node *node = newList.head;
+      Node *nodeFind = newList.findbyMSSV();
+      if (nodeFind == NULL)
       {
-        GoTo(40, 7);
+        system("cls");
+        GoTo(40, 2);
+        cout << "-------------------------------------------\n";
+        GoTo(53, 3);
+        cout << "TÌM KIẾM SINH VIÊN\n";
+        GoTo(40, 4);
+        cout << "-------------------------------------------\n";
+        GoTo(40, 5);
         cout << "Không tìm thấy sinh viên này!!!\n";
         char newChoose;
-        GoTo(40, 8);
+        GoTo(40, 6);
         cout << "Bạn có muốn tiếp tục (Nhấn Y để tiếp tục) : ";
         cin >> newChoose;
         if (newChoose == 'y' || newChoose == 'Y')
         {
           system("cls");
+          findMenu(newList);
         }
         else
         {
           choose = 3;
+          system("cls");
+          break;
         }
       }
-      else
+      outputSub();
+      int i = 0;
+      while (node != NULL)
       {
-        showNode(node);
-        exitMenu();
+        if (node->data.getFullName() == nodeFind->data.getFullName())
+        {
+          cout << "||" << i + 1 << "\t";
+          showNode(node);
+          i++;
+        }
+        node = node->next;
       }
+      exitMenu();
       system("cls");
       break;
     }
@@ -407,6 +461,7 @@ void studyWarningMenu(listStudent &newList)
   cout << "DANH SÁCH SINH VIÊN BỊ CẢNH CÁO HỌC TẬP\n";
   GoTo(40, 4);
   cout << "-------------------------------------------\n";
+  outputSub();
   newList.studyWarning();
   exitMenu();
 }

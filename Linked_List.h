@@ -34,6 +34,7 @@ struct listStudent
 	void removeByMSSV();
 	void removeByName();
 	void editMSSV(Node *node);
+	void editMajor(Node *node);
 	void editName(Node *node);
 	void editDateOfBirth(Node *node);
 	void editAddress(Node *node);
@@ -65,7 +66,7 @@ Node *createNode()
 // show node
 void showNode(Node *node)
 {
-	cout << "\t" << node->data;
+	cout << "\t" << node->data << endl;
 }
 
 //-----list----------
@@ -229,15 +230,6 @@ void listStudent::removeByMSSV()
 	Node *node = head;
 	while (node != NULL)
 	{
-		//	if (node->data.getFullName() != mssv)
-		//	{
-		//		cout << "Không có sinh viên này!!!\n";
-		//		cout << "Vui lòng nhập lại MSSV: ";
-		//		fflush(stdin);
-		//		getline(cin, mssv);
-		//		Node *node = head;
-		//	}
-		//	else
 		if (node->data.getMSSV() == mssv)
 		{
 			remove(node);
@@ -260,15 +252,7 @@ void listStudent::removeByName()
 	Node *node = head;
 	while (node != NULL)
 	{
-		//	if (node->data.getFullName() != name)
-		//	{
-		//		cout << "Không có sinh viên này!!!\n";
-		//		cout << "Vui lòng nhập lại tên sinh viên: ";
-		//		fflush(stdin);
-		//		getline(cin, name);
-		//		Node *node = head;
-		//	}
-		//	else
+
 		if (node->data.getFullName() == name)
 		{
 			remove(node);
@@ -333,6 +317,16 @@ void listStudent::editMSSV(Node *node)
 	fflush(stdin);
 	getline(cin, MSSV);
 	node->data.setMSSV(MSSV);
+	cout << "\tHoàn thành!";
+}
+
+void listStudent::editMajor(Node *node)
+{
+	string major;
+	cout << "\tNhập ngành học mới : ";
+	fflush(stdin);
+	getline(cin, major);
+	node->data.setMajor(major);
 	cout << "\tHoàn thành!";
 }
 
@@ -449,12 +443,12 @@ void listStudent::writeFile()
 {
 	fstream fileSV;
 	fileSV.open("Student.txt", ios::out | ios::app);
-	fileSV << "STT\t\t\tMã sinh viên\t\t\tHọ và tên\t\t\tNgày sinh\t\t\tĐịa chỉ\t\t\tĐiểm trung bình\t\t\tĐiểm rèn luyện\t\t\tĐiểm cộng" << endl;
+	fileSV << "STT\t\t\tMã sinh viên\t\t\tHọ và tên\t\t\tNgày sinh\t\t\tĐịa chỉ\t\t\tNgành học\t\t\t\tĐiểm trung bình\t\t\tĐiểm rèn luyện\t\t\tĐiểm cộng" << endl;
 	Node *node = head;
 	int i = 0;
 	while (node != NULL)
 	{
-		fileSV << " " << i + 1 << "\t\t\t" << node->data.getMSSV() << "\t\t\t" << node->data.getFullName() << "\t\t" << node->data.getDay() << "/" << node->data.getMonth() << "/" << node->data.getYear() << "\t\t" << node->data.getAddress() << "\t\t\t\t" << node->data.getGPA() << "\t\t\t\t" << node->data.getTrainingPoint() << "\t\t\t\t" << node->data.getExtraPoint() << endl;
+		fileSV << " " << i + 1 << "\t\t\t" << node->data.getMSSV() << "\t\t\t\t" << node->data.getFullName() << "\t\t" << node->data.getDay() << "/" << node->data.getMonth() << "/" << node->data.getYear() << "\t\t" << node->data.getAddress() << "\t\t\t\t" << node->data.getMajor() << "\t\t\t\t" << node->data.getGPA() << "\t\t\t\t " << node->data.getTrainingPoint() << "\t\t\t\t " << node->data.getExtraPoint() << endl;
 
 		node = node->next;
 	}
