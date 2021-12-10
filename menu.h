@@ -334,6 +334,7 @@ void findMenu(listStudent &newList)
       getline(cin, name);
       outputSub();
       int i = 0;
+      // thêm chứ năng tìm kiếm nếu người dùng nhập chữ thường
       while (node != NULL)
       {
         string nameSV = node->data.getFullName();
