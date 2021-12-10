@@ -16,6 +16,7 @@ void sortMenu(listStudent &newList);
 void studyWarningMenu(listStudent &newList);
 void writeFileMenu(listStudent &newList);
 void outputSub();
+bool checkID(listStudent &newList, Node *p);
 
 void GoTo(SHORT posX, SHORT posY)
 {
@@ -46,6 +47,7 @@ void outputSub()
   cout << "\n||STT\t\t||MSSV\t\t\t||Họ và tên\t\t\t||Ngày sinh\t\t\t||Địa chỉ\t\t||Ngành học\t\t||Điểm trung bình\t||Điểm rèn luyện\t||Điểm cộng\n";
 }
 
+// sửa hàm mssv trùng
 void inputMenu(listStudent &newList)
 {
   system("cls");
@@ -58,7 +60,26 @@ void inputMenu(listStudent &newList)
   cin >> newSize;
   for (int i = 0; i < newSize; i++)
   {
-    newList.addLast();
+    // newList.addLast();
+    Node *node = createNode();
+    // dùng vòng lặp để kiểm tra mssv trùng
+    while (checkID(newList, node))
+    {
+      cout << "\t\tMSSV bị trùng!\n";
+      cout << "\t\tNhập lại MSSV : ";
+      string newMSSV;
+      cin >> newMSSV;
+      node->data.setMSSV(newMSSV);
+      if (checkID(newList, node) == false)
+      {
+        newList.addLast(node);
+        break;
+      }
+    }
+    if (checkID(newList, node) == false)
+    {
+      newList.addLast(node);
+    }
   }
   cout << "\tHOÀN THÀNH!";
   exitMenu();
@@ -85,7 +106,26 @@ void addMenu(listStudent &newList)
   cout << "-------------------------------------\n";
   GoTo(45, 3);
   cout << "THÊM MỘT SINH VIÊN MỚI\n";
-  newList.addLast();
+  Node *node = createNode();
+  // dùng vòng lặp để kiểm tra mssv trùng
+  while (checkID(newList, node))
+  {
+    cout << "\t\tMSSV bị trùng!\n";
+    cout << "\t\tNhập lại MSSV : ";
+    string newMSSV;
+    cin >> newMSSV;
+    node->data.setMSSV(newMSSV);
+    if (checkID(newList, node) == false)
+    {
+      newList.addLast(node);
+      break;
+    }
+  }
+  if (checkID(newList, node) == false)
+  {
+    newList.addLast(node);
+  }
+  cout << "\tHOÀN THÀNH!";
   exitMenu();
 }
 
@@ -296,7 +336,12 @@ void findMenu(listStudent &newList)
       int i = 0;
       while (node != NULL)
       {
-        if (node->data.getFullName().find(name) != string::npos)
+        string nameSV = node->data.getFullName();
+        for (int index = 0; index < nameSV.length(); index++)
+        {
+          nameSV[index] = tolower(nameSV[index]);
+        }
+        if (nameSV.find(name) != string::npos)
         {
           cout << "||" << i + 1 << "\t";
           showNode(node);
@@ -482,7 +527,7 @@ void writeFileMenu(listStudent &newList)
 void mainMenu(listStudent &newList)
 {
   system("COLOR 70");
-  SetConsoleOutputCP(65001); //hien thi ky tu dac biet
+  SetConsoleOutputCP(65001); // hien thi ky tu dac biet
   SetConsoleTitle("Quan Ly Sinh Vien");
   int choose;
   do
@@ -547,4 +592,22 @@ void mainMenu(listStudent &newList)
       break;
     }
   } while (choose != 10);
+}
+
+// thêm hàm kiểm tra mssv trùng
+bool checkID(listStudent &newList, Node *p)
+{
+  Node *node = newList.head;
+  while (node != NULL)
+  {
+    if (node->data.getMSSV() == p->data.getMSSV())
+    {
+      return true;
+    }
+    else
+    {
+      node = node->next;
+    }
+  }
+  return false;
 }

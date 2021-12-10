@@ -47,7 +47,7 @@ struct listStudent
 };
 
 using namespace std;
-//khoi tao Node
+// khoi tao Node
 Node *createNode()
 {
 	Student sinhVien;
@@ -56,7 +56,7 @@ Node *createNode()
 	if (p == NULL)
 	{
 		cout << "Không thể thêm vào";
-		return NULL; //thay return 0 bang return NULL vi kieu du lieu tra ve la node
+		return NULL; // thay return 0 bang return NULL vi kieu du lieu tra ve la node
 	}
 	p->data = sinhVien;
 	p->next = NULL;
@@ -70,7 +70,7 @@ void showNode(Node *node)
 }
 
 //-----list----------
-//khoi tao danh sach rong
+// khoi tao danh sach rong
 void listStudent::initList()
 {
 	head = tail = NULL;
@@ -126,7 +126,6 @@ void listStudent::addLast()
 	{
 		tail->next = node;
 		tail = node;
-		// delete node;
 	}
 	size++;
 }

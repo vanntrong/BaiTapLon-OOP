@@ -1,1 +1,5 @@
 
+STT			Mã sinh viên			Họ và tên			Ngày sinh			Địa chỉ			Ngành học				Điểm trung bình			Điểm rèn luyện			Điểm cộng
+ 1			615123789				Nguyen Van A		15/8/2002		Tp.HCM				CNTT K61				6				 7				 7
+ 1			615123123				Nguyen Van A		15/9/2002		Tp.HCM				CNTT K61				4				 5				 5
+ 1			61234564				Nguyen Van B		12/12/2002		Tp.HCM				CNTT K61				7				 8				 8
