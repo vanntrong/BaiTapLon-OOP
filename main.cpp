@@ -3,7 +3,8 @@
            2. Thêm chức năng tìm kiếm bằng chữ thường
   - Võ Văn Trọng: 6151071109
   - Bùi Nhật Huy:
-  -Nguyễn Thiên Kha:
+  - Nguyễn Thiên Kha:
+  - Nhóm 28
 */
 #include "menu.h"
 
